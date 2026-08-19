@@ -99,17 +99,26 @@ function render(){
       </div>
     </section>
   `).join('');
+
+  // Attach clean image fallback listeners after DOM render
+  directoryEl.querySelectorAll('.avatar-photo').forEach(img => {
+    img.addEventListener('error', function(){
+      const name = this.getAttribute('alt') || '';
+      const fallback = document.createElement('div');
+      fallback.className = 'avatar avatar-fallback';
+      fallback.textContent = initials(name);
+      this.closest('.avatar-wrap').replaceWith(fallback);
+    });
+  });
 }
 
 function avatarHTML(f){
   if(!f.photo) {
     return `<div class="avatar avatar-fallback">${initials(f.name)}</div>`;
   }
-  
   return `
     <div class="avatar-wrap">
-      <img class="avatar-photo" src="${f.photo}" alt="${f.name}"
-           onerror="this.parentElement.outerHTML='<div class=\\'avatar avatar-fallback\\'>${initials(f.name)}</div>'">
+      <img class="avatar-photo" src="${f.photo}" alt="${f.name}">
     </div>`;
 }
 
@@ -132,3 +141,4 @@ function cardHTML(f){
 }
 
 init();
+```[cite: 3]
