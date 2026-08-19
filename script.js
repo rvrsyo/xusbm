@@ -102,14 +102,14 @@ function render(){
 }
 
 function avatarHTML(f){
-  const fallback = `<div class="avatar avatar-fallback">${initials(f.name)}</div>`;
-  if(!f.photo) return fallback;
-  // Photo shown if it loads; silently falls back to initials if the file
-  // is missing (this sample data references filenames that don't exist yet).
+  if(!f.photo) {
+    return `<div class="avatar avatar-fallback">${initials(f.name)}</div>`;
+  }
+  
   return `
     <div class="avatar-wrap">
       <img class="avatar-photo" src="${f.photo}" alt="${f.name}"
-           onerror="this.closest('.avatar-wrap').outerHTML = '${fallback.replace(/'/g, "\\'")}'">
+           onerror="this.parentElement.outerHTML='<div class=\\'avatar avatar-fallback\\'>${initials(f.name)}</div>'">
     </div>`;
 }
 
