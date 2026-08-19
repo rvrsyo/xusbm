@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty Register · School of Business and Management · XU–Ateneo de Cagayan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="masthead-id">
+        <div class="seal">XU</div>
+        <div>
+          <p class="eyebrow">Xavier University — Ateneo de Cagayan</p>
+          <h1>School of Business &amp; Management<br>Faculty Register</h1>
+          <p class="sub">A directory of the deans, chairpersons, and faculty of the School of Business and Management, organized by department.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="masthead-meta" id="masthead-meta">
+      <div><strong id="stat-total">—</strong>Faculty listed</div>
+      <div><strong id="stat-depts">—</strong>Departments</div>
+      <div><strong>A.Y. 2026–2027</strong>Current register</div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="controls-inner">
+      <div class="search-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search" placeholder="Search by name or department…" aria-label="Search faculty">
+      </div>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Filter by department"></div>
+    </div>
+  </div>
+
+  <main class="directory" id="directory" aria-live="polite"></main>
+
+  <div class="empty-state" id="empty-state">
+    <span class="glyph">§</span>
+    No entries match your search.
+  </div>
+
+  <footer>
+    <span>SBM Faculty Register — for internal / academic use</span>
+    <span>Photos load from assets/photos/ · missing files fall back to initials</span>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>

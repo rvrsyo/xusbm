@@ -1,0 +1,376 @@
+/* ============================================================
+   SBM FACULTY REGISTER — Xavier University · Ateneo de Cagayan
+   Design concept: a business school's faculty directory framed
+   as a bound ledger / registry book — index numbers, tab
+   dividers by department, perforated card stubs, and a seal.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --ink:        #0B2545;   /* XU navy — masthead, primary text on light */
+  --ink-2:      #16345E;
+  --parchment:  #F5F1E6;   /* page background */
+  --card:       #FFFDF8;   /* card surface */
+  --gold:       #A9791F;   /* accent — rules, numerals, active states */
+  --gold-soft:  #E7D9AF;
+  --green:      #2E5A4C;   /* department tag ink */
+  --green-soft: #DCE7DF;
+  --charcoal:   #262421;   /* body text */
+  --muted:      #6B6559;
+  --rule:       rgba(11,37,69,0.14);
+
+  --display: 'Fraunces', Georgia, serif;
+  --body:    'Inter', -apple-system, sans-serif;
+  --mono:    'IBM Plex Mono', 'Courier New', monospace;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--parchment);
+  color:var(--charcoal);
+  font-family:var(--body);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* faint ledger-paper texture */
+body{
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px);
+  background-size: 100% 2.35rem;
+  background-attachment:local;
+}
+
+a{ color:inherit; }
+
+/* ---------------- Masthead ---------------- */
+.masthead{
+  background: var(--ink);
+  background-image: radial-gradient(circle at 85% -20%, #1c3f6d 0%, transparent 55%);
+  color:#F5F1E6;
+  padding: 3.2rem 6vw 2.6rem;
+  position:relative;
+  border-bottom: 6px solid var(--gold);
+}
+
+.masthead-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+
+.seal{
+  width:64px; height:64px;
+  border-radius:50%;
+  border:2px solid var(--gold-soft);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.1rem;
+  letter-spacing:0.02em;
+  color:var(--gold-soft);
+  flex-shrink:0;
+  position:relative;
+}
+.seal::before{
+  content:"";
+  position:absolute; inset:-7px;
+  border:1px solid rgba(231,217,175,0.35);
+  border-radius:50%;
+}
+
+.masthead-id{ display:flex; gap:1rem; align-items:center; }
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  margin:0 0 0.6rem;
+}
+
+.masthead h1{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:clamp(2rem, 4.4vw, 3.1rem);
+  line-height:1.05;
+  margin:0 0 0.5rem;
+  max-width:16ch;
+}
+
+.masthead .sub{
+  font-size:0.98rem;
+  color:#CBD6E6;
+  margin:0;
+  max-width:52ch;
+}
+
+.masthead-meta{
+  display:flex;
+  gap:2.4rem;
+  margin-top:2.2rem;
+  padding-top:1.4rem;
+  border-top:1px solid rgba(245,241,230,0.18);
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:#B9C6DA;
+  flex-wrap:wrap;
+}
+.masthead-meta strong{
+  display:block;
+  font-family:var(--display);
+  font-size:1.5rem;
+  color:#F5F1E6;
+  font-weight:600;
+}
+
+/* ---------------- Control bar (search + tabs) ---------------- */
+.controls{
+  position:sticky; top:0; z-index:10;
+  background:rgba(245,241,230,0.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--rule);
+  padding:1rem 6vw;
+}
+
+.controls-inner{
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+}
+
+.search-wrap{
+  position:relative;
+  flex:1 1 240px;
+  min-width:200px;
+}
+.search-wrap svg{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  opacity:0.5;
+}
+#search{
+  width:100%;
+  padding:0.65rem 0.9rem 0.65rem 2.3rem;
+  border:1px solid var(--rule);
+  background:var(--card);
+  border-radius:3px;
+  font-family:var(--body);
+  font-size:0.92rem;
+  color:var(--charcoal);
+}
+#search:focus{
+  outline:2px solid var(--gold);
+  outline-offset:1px;
+}
+#search::placeholder{ color:var(--muted); }
+
+.tabs{
+  display:flex;
+  gap:0.4rem;
+  flex-wrap:wrap;
+}
+.tab{
+  font-family:var(--mono);
+  font-size:0.74rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  padding:0.5rem 0.75rem;
+  border:1px solid var(--rule);
+  background:transparent;
+  color:var(--muted);
+  border-radius:3px;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.tab:hover{ border-color:var(--gold); color:var(--ink); }
+.tab.active{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:#F5F1E6;
+}
+
+/* ---------------- Directory ---------------- */
+.directory{ padding: 2.6rem 6vw 5rem; max-width:1280px; margin:0 auto; }
+
+.dept-group{ margin-bottom:3rem; }
+
+.dept-head{
+  display:flex;
+  align-items:baseline;
+  gap:0.9rem;
+  margin-bottom:1.3rem;
+}
+.dept-num{
+  font-family:var(--mono);
+  color:var(--gold);
+  font-size:0.8rem;
+}
+.dept-head h2{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.5rem;
+  margin:0;
+  color:var(--ink);
+}
+.dept-head .count{
+  font-family:var(--mono);
+  font-size:0.76rem;
+  color:var(--muted);
+}
+.dept-rule{ flex:1; height:1px; background:var(--rule); }
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(250px,1fr));
+  gap:1.1rem;
+}
+
+/* ---- ledger card ---- */
+.card{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:1.2rem 1.2rem 1.3rem;
+  position:relative;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card::before{ /* perforated stub edge */
+  content:"";
+  position:absolute; top:0; left:0; right:0; height:3px;
+  background-image: repeating-linear-gradient(90deg, var(--gold-soft) 0 6px, transparent 6px 12px);
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+  box-shadow:0 10px 22px -14px rgba(11,37,69,0.4);
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:0.9rem;
+}
+.index-no{
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--gold);
+  letter-spacing:0.03em;
+}
+.avatar-wrap{
+  width:46px; height:46px;
+  border-radius:50%;
+  flex-shrink:0;
+  overflow:hidden;
+  border:1px solid var(--rule);
+}
+.avatar-photo{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+.avatar, .avatar-fallback{
+  width:46px; height:46px;
+  border-radius:50%;
+  background:var(--ink);
+  color:var(--gold-soft);
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1rem;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+
+.card h3{
+  font-family:var(--display);
+  font-size:1.12rem;
+  font-weight:600;
+  margin:0 0 0.2rem;
+  color:var(--ink);
+}
+.card .title{
+  font-size:0.84rem;
+  color:var(--muted);
+  margin:0 0 0.75rem;
+}
+
+.tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  background:var(--green-soft);
+  color:var(--green);
+  padding:0.22rem 0.5rem;
+  border-radius:2px;
+  margin-bottom:0.85rem;
+}
+
+.card-details{
+  border-top:1px dashed var(--rule);
+  padding-top:0.7rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.35rem;
+}
+.card-details a, .card-details span{
+  font-size:0.8rem;
+  color:var(--charcoal);
+  text-decoration:none;
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+}
+.card-details a:hover{ color:var(--gold); text-decoration:underline; }
+.card-details .icon{ opacity:0.55; flex-shrink:0; }
+
+.empty-state{
+  text-align:center;
+  padding:4rem 1rem;
+  color:var(--muted);
+  font-family:var(--body);
+  display:none;
+}
+.empty-state.show{ display:block; }
+.empty-state .glyph{
+  font-family:var(--display);
+  font-size:2.4rem;
+  color:var(--gold-soft);
+  display:block;
+  margin-bottom:0.6rem;
+}
+
+/* ---------------- Footer ---------------- */
+footer{
+  background:var(--ink);
+  color:#B9C6DA;
+  padding:2.2rem 6vw;
+  font-family:var(--mono);
+  font-size:0.74rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:0.8rem;
+  border-top:4px solid var(--gold);
+}
+
+/* ---------------- Motion & a11y ---------------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .card{ transition:none; }
+}
+:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+
+@media (max-width: 600px){
+  .masthead{ padding:2.4rem 5vw 2rem; }
+  .masthead-meta{ gap:1.4rem; }
+  .directory{ padding:2rem 5vw 4rem; }
+}

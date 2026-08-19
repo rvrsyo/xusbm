@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Ruth Love V. Russell",
+    "role": "Dean",
+    "department": "Dean's Office",
+    "email": "rrussell@xu.edu.ph",
+    "office": "SBM 203, SBM Building",
+    "photo": "assets/photos/rrussell.jpg"
+  },
+  {
+    "name": "Toni Rose Tahil-Fabroa",
+    "role": "Associate Dean",
+    "department": "Dean's Office",
+    "email": "ttahil-fabroa@xu.edu.ph",
+    "office": "SBM 203, SBM Building",
+    "photo": "assets/photos/faculty2.jpg"
+  },
+  {
+    "name": "Riza O. Mabelin",
+    "role": "Staff",
+    "department": "Dean's Office",
+    "email": "rmabelin@xu.edu.ph",
+    "office": "SBM 203, SBM Building",
+    "photo": "assets/photos/faculty2.jpg"
+  },
+  {
+    "name": "Sherlyn F. Sarraga",
+    "role": "Staff",
+    "department": "Dean's Office",
+    "email": "ssarraga@xu.edu.ph",
+    "office": "SBM 203, SBM Building",
+    "photo": ""
+  },
+  {
+    "name": "Rose Enaje",
+    "role": "Staff",
+    "department": "Graduate Studies",
+    "email": "renaje@xu.edu.ph",
+    "office": "SBM Faculty Room 102",
+    "photo": ""
+  },
+  {
+    "name": "Rustum D. Gevero",
+    "role": "Director",
+    "department": "Graduate Studies",
+    "email": "rgevero@xu.edu.ph",
+    "office": "SBM Faculty Room 102",
+    "photo": "assets/photos/rgevero.jpg"
+  },
+  {
+    "name": "Leo Santiago Arrabaca",
+    "role": "Chair",
+    "department": "Business Administration",
+    "email": "larrabaca@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Tracy June C. Dy",
+    "role": "Assistant Chair",
+    "department": "Business Administration",
+    "email": "tdy@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Valerie Irene C. Arellano",
+    "role": "Faculty",
+    "department": "Business Administration",
+    "email": "varellano@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Milbert P. Dialogo",
+    "role": "CTTL Director",
+    "department": "Business Administration",
+    "email": "mdialogo@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Jimbo A. Fuentes",
+    "role": "DM–Research Coordinator",
+    "department": "Business Administration",
+    "email": "jfuentes@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Desiree M. La",
+    "role": "SEC Director",
+    "department": "Business Administration",
+    "email": "dla@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Jo-jean M. Lumayag",
+    "role": "SD Coordinator",
+    "department": "Business Administration",
+    "email": "jlumayag@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Edgardo A. Palasan",
+    "role": "Faculty",
+    "department": "Business Administration",
+    "email": "epalasan@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Bonna L. Soriano",
+    "role": "Attorney",
+    "department": "Business Administration",
+    "email": "bsoriano@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Abel Nicolo Yu",
+    "role": "Chair",
+    "department": "Accountancy",
+    "email": "ayu@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Marie Antonette B. Emata",
+    "role": "Full-Time Faculty",
+    "department": "Accountancy",
+    "email": "memata@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Laneza Mae Quidit",
+    "role": "Full-Time Faculty",
+    "department": "Accountancy",
+    "email": "lquidit@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  },
+  {
+    "name": "Rolan Literatus",
+    "role": "Full-Time Faculty",
+    "department": "Accountancy",
+    "email": "rliteratus@xu.edu.ph",
+    "office": "",
+    "photo": ""
+  }
+]
