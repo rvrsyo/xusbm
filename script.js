@@ -1,6 +1,29 @@
 let ALL_FACULTY = [];
 let activeDept = "All";
 
+// Embedded fallback data in case faculty.json fails to fetch
+const FALLBACK_FACULTY = [
+  { "name": "Ruth Love V. Russell", "role": "Dean", "department": "Dean's Office", "email": "rrussell@xu.edu.ph", "office": "SBM 203, SBM Building", "photo": "assets/photos/rrussell.jpg" },
+  { "name": "Toni Rose Tahil-Fabroa", "role": "Associate Dean", "department": "Dean's Office", "email": "ttahil-fabroa@xu.edu.ph", "office": "SBM 203, SBM Building", "photo": "assets/photos/faculty2.jpg" },
+  { "name": "Riza O. Mabelin", "role": "Staff", "department": "Dean's Office", "email": "rmabelin@xu.edu.ph", "office": "SBM 203, SBM Building", "photo": "assets/photos/faculty2.jpg" },
+  { "name": "Sherlyn F. Sarraga", "role": "Staff", "department": "Dean's Office", "email": "ssarraga@xu.edu.ph", "office": "SBM 203, SBM Building", "photo": "" },
+  { "name": "Rose Enaje", "role": "Staff", "department": "Graduate Studies", "email": "renaje@xu.edu.ph", "office": "SBM Faculty Room 102", "photo": "" },
+  { "name": "Rustum D. Gevero", "role": "Director", "department": "Graduate Studies", "email": "rgevero@xu.edu.ph", "office": "SBM Faculty Room 102", "photo": "assets/photos/rgevero.jpg" },
+  { "name": "Leo Santiago Arrabaca", "role": "Chair", "department": "Business Administration", "email": "larrabaca@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Tracy June C. Dy", "role": "Assistant Chair", "department": "Business Administration", "email": "tdy@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Valerie Irene C. Arellano", "role": "Faculty", "department": "Business Administration", "email": "varellano@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Milbert P. Dialogo", "role": "CTTL Director", "department": "Business Administration", "email": "mdialogo@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Jimbo A. Fuentes", "role": "DM–Research Coordinator", "department": "Business Administration", "email": "jfuentes@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Desiree M. La", "role": "SEC Director", "department": "Business Administration", "email": "dla@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Jo-jean M. Lumayag", "role": "SD Coordinator", "department": "Business Administration", "email": "jlumayag@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Edgardo A. Palasan", "role": "Faculty", "department": "Business Administration", "email": "epalasan@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Bonna L. Soriano", "role": "Attorney", "department": "Business Administration", "email": "bsoriano@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Abel Nicolo Yu", "role": "Chair", "department": "Accountancy", "email": "ayu@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Marie Antonette B. Emata", "role": "Full-Time Faculty", "department": "Accountancy", "email": "memata@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Laneza Mae Quidit", "role": "Full-Time Faculty", "department": "Accountancy", "email": "lquidit@xu.edu.ph", "office": "", "photo": "" },
+  { "name": "Rolan Literatus", "role": "Full-Time Faculty", "department": "Accountancy", "email": "rliteratus@xu.edu.ph", "office": "", "photo": "" }
+];
+
 const directoryEl = document.getElementById('directory');
 const tabsEl = document.getElementById('tabs');
 const emptyStateEl = document.getElementById('empty-state');
@@ -26,13 +49,14 @@ function initials(name){
 async function init(){
   try{
     const res = await fetch('faculty.json');
+    if (!res.ok) throw new Error('File not found');
     const raw = await res.json();
-    // assign a stable registry number in file order
     ALL_FACULTY = raw.map((f, i) => ({ ...f, id: i + 1 }));
   } catch(e){
-    directoryEl.innerHTML = `<p style="font-family:var(--mono);color:var(--muted)">Could not load faculty.json — make sure it sits next to index.html.</p>`;
-    return;
+    console.warn("Could not fetch faculty.json, using fallback data.");
+    ALL_FACULTY = FALLBACK_FACULTY.map((f, i) => ({ ...f, id: i + 1 }));
   }
+
   buildStats();
   buildTabs();
   render();
@@ -78,7 +102,6 @@ function render(){
   directoryEl.innerHTML = '';
   if(filtered.length === 0) return;
 
-  // group by department, preserving first-seen order
   const groups = [];
   filtered.forEach(f => {
     let g = groups.find(g => g.department === f.department);
@@ -100,7 +123,7 @@ function render(){
     </section>
   `).join('');
 
-  // Attach clean image fallback listeners after DOM render
+  // Handle image fallback to initials gracefully
   directoryEl.querySelectorAll('.avatar-photo').forEach(img => {
     img.addEventListener('error', function(){
       const name = this.getAttribute('alt') || '';
@@ -141,4 +164,4 @@ function cardHTML(f){
 }
 
 init();
-```[cite: 3]
+```[cite: 3, 4]
